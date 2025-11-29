@@ -46,6 +46,8 @@ This mini-game was designed for educational gamification under SIH.It helps:
 *   Backend Developer – [Ajit Chauhan](https://github.com/AjitChauhan081)
     
 *   Frontend – [Manthan Vinzuda](https://github.com/Manthanvinzuda007)
+
+* supporter - M.Jishan Saiyad
     
 *   Research & Pitch – Hasti Sudani & Devanshi Patel
     
