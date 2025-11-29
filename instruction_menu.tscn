@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=3 uid="uid://cq5xqoboiandr"]
+
+[ext_resource type="Script" uid="uid://bal2hp37ctjb6" path="res://instruction_menu.gd" id="1_1fme2"]
+[ext_resource type="FontFile" uid="uid://c80740lr3ef3l" path="res://PressStart2P-Regular.ttf" id="1_47ji8"]
+[ext_resource type="Texture2D" uid="uid://dtqle36o0oa78" path="res://Menu_Sprite.png" id="3_unvn7"]
+[ext_resource type="Texture2D" uid="uid://blnx5axm5k3u0" path="res://Menu_Sprite2.png" id="4_8tknn"]
+[ext_resource type="Texture2D" uid="uid://b1fu2ap2lt4m3" path="res://Menu_Sprite3.png" id="5_lebya"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47ji8"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 10
+
+[sub_resource type="FontVariation" id="FontVariation_1fme2"]
+base_font = ExtResource("1_47ji8")
+
+[sub_resource type="FontVariation" id="FontVariation_47ji8"]
+base_font = ExtResource("1_47ji8")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fme2"]
+bg_color = Color(0.0768358, 0.07683582, 0.076835774, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+anti_aliasing_size = 2.0
+
+[node name="Instruction_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1fme2")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.92099476, 0.9209946, 0.9209946, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -281.0
+offset_right = 225.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_47ji8")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+offset_left = 4.0
+offset_top = -1.0
+offset_right = 353.0
+offset_bottom = 357.0
+theme_override_fonts/font = SubResource("FontVariation_1fme2")
+text = "
+
+Instruction:
+1.Green Bin:Catch Banana
+(Because it's Biodegradable)
+
+2.Blue Bin:Catch Paper
+(Because it's Recyclable)
+It's a Wet or Dry Bin
+
+3.Black Bin:Catch Bandage
+(Because it's Domestic Hazardous Waste)"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Panel/Label"]
+layout_mode = 1
+offset_left = -2.0
+offset_top = 3.0
+offset_right = 86.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(1, 0.6783903, 0.4636411, 1)
+theme_override_colors/font_focus_color = Color(1, 0.6784314, 0.4627451, 1)
+theme_override_colors/font_pressed_color = Color(0.95350116, 0.6534177, 0.5521707, 1)
+theme_override_colors/font_hover_color = Color(0.8895542, 0.45354742, 1.92523e-07, 1)
+theme_override_fonts/font = SubResource("FontVariation_47ji8")
+text = "Close"
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(387, 90)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_unvn7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Panel"]
+position = Vector2(387, 199)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_8tknn")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Panel"]
+position = Vector2(387.99997, 310)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_lebya")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 98.0
+offset_right = 300.0
+offset_bottom = 298.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1fme2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel2"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 7.0
+offset_right = 241.0
+offset_bottom = 197.0
+theme_override_colors/default_color = Color(0.008202022, 0.008202025, 0.008202025, 1)
+theme_override_colors/font_outline_color = Color(0.9869577, 0.6163159, 7.70092e-07, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("1_47ji8")
+text = "
+Controls:
+
+Left:  A or ←
+
+Right: D or →
+
+Changing Bins:  E or ↑
+"
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Panel/Label/Button" to="." method="_on_button_pressed"]

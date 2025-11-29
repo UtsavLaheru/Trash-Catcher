@@ -1,0 +1,145 @@
+[gd_scene load_steps=20 format=3 uid="uid://65bhe0vglowk"]
+
+[ext_resource type="Script" uid="uid://v4b45e01x0h8" path="res://touch_control.gd" id="1_bw0om"]
+[ext_resource type="Texture2D" uid="uid://bixtcgkyprga8" path="res://Left_Touch_Button.png" id="1_tjkpe"]
+[ext_resource type="Texture2D" uid="uid://buq6uw0flwyhr" path="res://Rightt_Touch_Button.png" id="2_uah84"]
+[ext_resource type="Texture2D" uid="uid://bjsb6mb10dhex" path="res://Switching_Touch_Button.png" id="3_8io03"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8io03"]
+size = Vector2(30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uah84"]
+atlas = ExtResource("1_tjkpe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8io03"]
+atlas = ExtResource("1_tjkpe")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw0om"]
+atlas = ExtResource("1_tjkpe")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lllqi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uah84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8io03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw0om")
+}],
+"loop": false,
+"name": &"Left_pressed",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw0om"]
+size = Vector2(30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lllqi"]
+atlas = ExtResource("2_uah84")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8vgr"]
+atlas = ExtResource("2_uah84")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmmn8"]
+atlas = ExtResource("2_uah84")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b0ymi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lllqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8vgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmmn8")
+}],
+"loop": false,
+"name": &"Right_pressed",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lllqi"]
+size = Vector2(30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0ymi"]
+atlas = ExtResource("3_8io03")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc7dp"]
+atlas = ExtResource("3_8io03")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e51oj"]
+atlas = ExtResource("3_8io03")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5bqd2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0ymi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc7dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e51oj")
+}],
+"loop": false,
+"name": &"Switching_pressed",
+"speed": 14.0
+}]
+
+[node name="Touch_Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 296.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bw0om")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(-240, -40)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_8io03")
+action = "Left"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TouchScreenButton"]
+sprite_frames = SubResource("SpriteFrames_lllqi")
+animation = &"Left_pressed"
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="."]
+position = Vector2(-149, -40)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_bw0om")
+action = "Right"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TouchScreenButton2"]
+sprite_frames = SubResource("SpriteFrames_b0ymi")
+animation = &"Right_pressed"
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="."]
+position = Vector2(220, -40)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_lllqi")
+action = "Switching"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TouchScreenButton3"]
+sprite_frames = SubResource("SpriteFrames_5bqd2")
+animation = &"Switching_pressed"

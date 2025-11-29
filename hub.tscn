@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=3 uid="uid://cprykd7dlu83v"]
+
+[ext_resource type="FontFile" uid="uid://c80740lr3ef3l" path="res://PressStart2P-Regular.ttf" id="1_l10or"]
+[ext_resource type="Texture2D" uid="uid://cp2kkuno4uvn3" path="res://Hearts.png" id="2_hjueh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l10or"]
+
+[sub_resource type="FontVariation" id="FontVariation_hjueh"]
+base_font = ExtResource("1_l10or")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjueh"]
+atlas = ExtResource("2_hjueh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eldl"]
+atlas = ExtResource("2_hjueh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7r13"]
+atlas = ExtResource("2_hjueh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l10or"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjueh")
+}],
+"loop": true,
+"name": &"Empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eldl")
+}],
+"loop": true,
+"name": &"Full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7r13")
+}],
+"loop": true,
+"name": &"Half",
+"speed": 5.0
+}]
+
+[node name="Hub" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="Panel" type="PanelContainer" parent="."]
+z_index = 1000
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_right = 320.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_l10or")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_hjueh")
+text = "Score:0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Heart" type="TextureRect" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/HBoxContainer/Heart"]
+position = Vector2(20, 20)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_l10or")
+animation = &"Full"
+autoplay = "Full"
+
+[node name="Heart2" type="TextureRect" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/HBoxContainer/Heart2"]
+position = Vector2(20, 20)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_l10or")
+animation = &"Full"
+autoplay = "Full"
+
+[node name="Heart3" type="TextureRect" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/HBoxContainer/Heart3"]
+position = Vector2(20, 20)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_l10or")
+animation = &"Half"
+autoplay = "Full"

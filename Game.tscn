@@ -1,0 +1,173 @@
+[gd_scene load_steps=22 format=3 uid="uid://b6wkisdqbj0gr"]
+
+[ext_resource type="Script" uid="uid://cl12i0vufrw2x" path="res://game.gd" id="1_u44n3"]
+[ext_resource type="Texture2D" uid="uid://srnxpchihqs1" path="res://Background.png" id="1_wbfu4"]
+[ext_resource type="Texture2D" uid="uid://faqcu0y3pn22" path="res://Trash Man.png" id="2_xkndl"]
+[ext_resource type="Script" uid="uid://cyipxp6mjx77s" path="res://player.gd" id="3_sb48q"]
+[ext_resource type="Texture2D" uid="uid://dxe1f2h2gvmqg" path="res://Trash Man_walking.png" id="4_t88pq"]
+[ext_resource type="PackedScene" uid="uid://cprykd7dlu83v" path="res://hub.tscn" id="6_r0x5m"]
+[ext_resource type="PackedScene" uid="uid://hlwv4yqu4hfv" path="res://menu.tscn" id="7_3mrqo"]
+[ext_resource type="PackedScene" uid="uid://65bhe0vglowk" path="res://touch_control.tscn" id="8_joorw"]
+[ext_resource type="PackedScene" uid="uid://dea2umwjmtew5" path="res://toggle_touch.tscn" id="9_2vekm"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_r0x5m"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sb48q"]
+b = Vector2(0, 9.706895)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_t88pq"]
+a = Vector2(0, -16.66667)
+b = Vector2(0, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0x5m"]
+atlas = ExtResource("4_t88pq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mrqo"]
+atlas = ExtResource("4_t88pq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joorw"]
+atlas = ExtResource("4_t88pq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vekm"]
+atlas = ExtResource("4_t88pq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx171"]
+atlas = ExtResource("4_t88pq")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhmtn"]
+atlas = ExtResource("4_t88pq")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwjdr"]
+atlas = ExtResource("4_t88pq")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvtmh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0x5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mrqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joorw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vekm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx171")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhmtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwjdr")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xkndl")
+}],
+"loop": true,
+"name": &"ideal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u44n3"]
+size = Vector2(10, 17)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_u44n3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = -10
+
+[node name="Background" type="Sprite2D" parent="StaticBody2D"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(321, 319.99997)
+scale = Vector2(4.9999995, 4.9999995)
+texture = ExtResource("1_wbfu4")
+
+[node name="Land" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 534)
+rotation = -1.5707964
+scale = Vector2(3, 64)
+shape = SubResource("SegmentShape2D_r0x5m")
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+position = Vector2(1, 549)
+rotation = -1.5707964
+scale = Vector2(3, 64)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Damage_Zone" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
+shape = SubResource("SegmentShape2D_r0x5m")
+
+[node name="Wall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(640, 2)
+scale = Vector2(1, 58.000008)
+shape = SubResource("SegmentShape2D_sb48q")
+
+[node name="Wall2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, 57.000004)
+scale = Vector2(1, 3.1199996)
+shape = SubResource("SegmentShape2D_t88pq")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(100, 470)
+scale = Vector2(4, 4)
+script = ExtResource("3_sb48q")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_lvtmh")
+animation = &"Walking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-3, 4.5)
+shape = SubResource("RectangleShape2D_u44n3")
+
+[node name="Marker2D" type="Marker2D" parent="Player"]
+position = Vector2(2, 5)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(322, 322)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Hub" parent="." instance=ExtResource("6_r0x5m")]
+z_index = 100
+metadata/_edit_use_anchors_ = true
+
+[node name="Menu" parent="." instance=ExtResource("7_3mrqo")]
+process_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Toggle_Touch" parent="." instance=ExtResource("9_2vekm")]
+process_mode = 3
+
+[node name="Touch_Control" parent="Toggle_Touch" instance=ExtResource("8_joorw")]
+process_mode = 1
+layout_mode = 1
+offset_left = -300.0
+offset_top = -4.0
+offset_right = -300.0
+offset_bottom = -4.0
+
+[connection signal="area_entered" from="StaticBody2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Menu/Button" to="." method="_on_button_pressed"]
+
+[editable path="Menu"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwdchl5jaa8mk"]
+
+[ext_resource type="Texture2D" uid="uid://dd7v4bst0s0y" path="res://Banana.png" id="1_4l8nl"]
+
+[sub_resource type="GDScript" id="GDScript_4l8nl"]
+script/source = "extends Area2D
+
+var score : int = 10
+var Gravity : int = 350
+
+var despawn_time : int = 4
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func _physics_process(delta):
+	position += transform.y * Gravity * delta
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	await get_tree().create_timer(despawn_time).timeout
+	queue_free()
+
+
+func _on_area_entered(area):
+	if area.name == \"Trash_can\":
+		area.OnScore(score)
+		queue_free()
+	elif area.name == \"Black_can\" or area.name == \"Blue_can\":
+		ScoreDamage.Wrong_Bin_Damange = 5
+		print(ScoreDamage.Wrong_Bin_Damange)
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltl1s"]
+size = Vector2(24, 10)
+
+[node name="Banana" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = SubResource("GDScript_4l8nl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("1_4l8nl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.0000001, 1)
+scale = Vector2(1.4, 1.4)
+shape = SubResource("RectangleShape2D_ltl1s")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

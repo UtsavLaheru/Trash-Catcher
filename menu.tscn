@@ -1,0 +1,157 @@
+[gd_scene load_steps=14 format=3 uid="uid://hlwv4yqu4hfv"]
+
+[ext_resource type="Script" uid="uid://d0to0a0g6hdak" path="res://menu.gd" id="1_4hy44"]
+[ext_resource type="Texture2D" uid="uid://ds4mbbiej3os1" path="res://Title.png" id="1_lti8b"]
+[ext_resource type="Texture2D" uid="uid://x1648d088xa5" path="res://Start_Buttons.png" id="1_ouk20"]
+[ext_resource type="Texture2D" uid="uid://cukwmwqbj3c50" path="res://Instruction_Buttons.png" id="2_mae5d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mae5d"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.07450981, 0.07450981, 0.07450981, 0.5921569)
+shadow_offset = Vector2(10, 10)
+anti_aliasing_size = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytr4m"]
+bg_color = Color(0.32102838, 0.2958763, 0.26126683, 0.5803922)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.07450981, 0.07450981, 0.07450981, 0.5921569)
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+anti_aliasing_size = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l48gv"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8175212, 0.81752133, 0.8175211, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.07450981, 0.07450981, 0.07450981, 0.5921569)
+shadow_size = 6
+shadow_offset = Vector2(5, 5)
+anti_aliasing_size = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hy44"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_4hy44"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_ytr4m"]
+events = [SubResource("InputEventKey_4hy44")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecwwl"]
+bg_color = Color(0.033853274, 0.03385329, 0.033853233, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_offset = Vector2(5, 5)
+anti_aliasing_size = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kk3ma"]
+bg_color = Color(0.32156864, 0.29411766, 0.2627451, 0.5803922)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.039215688, 0.039215688, 0.039215688, 0.6627451)
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+anti_aliasing_size = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrnbx"]
+bg_color = Color(0.033853274, 0.03385329, 0.033853233, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.83889705, 0.83889705, 0.8388969, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+anti_aliasing_size = 2.0
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4hy44")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.25
+offset_top = -19.75
+offset_right = 87.25
+offset_bottom = 19.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_mae5d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ytr4m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_l48gv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4hy44")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mae5d")
+shortcut = SubResource("Shortcut_ytr4m")
+expand_icon = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Button"]
+position = Vector2(90, 41)
+scale = Vector2(5, 5)
+texture = ExtResource("1_ouk20")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.5
+offset_top = 47.0
+offset_right = 62.5
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ecwwl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kk3ma")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nrnbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Button2"]
+position = Vector2(63, 16)
+scale = Vector2(2, 2)
+texture = ExtResource("2_mae5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -120)
+scale = Vector2(10, 10)
+texture = ExtResource("1_lti8b")
+
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

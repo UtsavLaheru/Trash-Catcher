@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6wkisdqbj0gr"]
+
+[ext_resource type="Script" uid="uid://cl12i0vufrw2x" path="res://game.gd" id="1_u44n3"]
+[ext_resource type="Texture2D" uid="uid://srnxpchihqs1" path="res://Background.png" id="1_wbfu4"]
+[ext_resource type="Texture2D" uid="uid://faqcu0y3pn22" path="res://Trash Man.png" id="2_xkndl"]
+[ext_resource type="Script" uid="uid://cyipxp6mjx77s" path="res://player.gd" id="3_sb48q"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_u44n3"]
+a = Vector2(129.39998, 4.5999985)
+b = Vector2(-0.59999996, 4.5999985)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u44n3"]
+size = Vector2(10, 17)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_u44n3")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(321, 319.99997)
+scale = Vector2(5, 5)
+
+[node name="Background" type="Sprite2D" parent="Area2D"]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_wbfu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-64, 39.000004)
+shape = SubResource("SegmentShape2D_u44n3")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(100, 470)
+scale = Vector2(4, 4)
+script = ExtResource("3_sb48q")
+speed = null
+Gravity = null
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_xkndl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-3, 4.5)
+shape = SubResource("RectangleShape2D_u44n3")

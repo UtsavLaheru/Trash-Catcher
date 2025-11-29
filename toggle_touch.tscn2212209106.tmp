@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dea2umwjmtew5"]
+
+[ext_resource type="Script" uid="uid://cti6lp2ls4pmd" path="res://toggle_touch.gd" id="1_4jj3h"]
+[ext_resource type="FontFile" uid="uid://c80740lr3ef3l" path="res://PressStart2P-Regular.ttf" id="1_vjnky"]
+
+[sub_resource type="FontVariation" id="FontVariation_4jj3h"]
+base_font = ExtResource("1_vjnky")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjnky"]
+size = Vector2(40, 30)
+
+[node name="Toggle_Touch" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4jj3h")
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.14406255, 0.14406255, 0.14406255, 1)
+theme_override_fonts/font = SubResource("FontVariation_4jj3h")
+theme_override_colors/button_checked_color = Color(0.9680068, 0, 0.22949383, 1)
+theme_override_colors/button_unchecked_color = Color(0.97551996, 0.0099963, 1.347661e-06, 1)
+text = "Toogle_Touch_Mode"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CheckButton"]
+position = Vector2(300, 10)
+shape = SubResource("RectangleShape2D_vjnky")
+action = "Click"
+
+[connection signal="pressed" from="CheckButton/TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]

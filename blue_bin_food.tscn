@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw8peirv1dhow"]
+
+[ext_resource type="Script" uid="uid://fqttansq3ub6" path="res://blue_bin_food.tres.gd" id="1_00jyy"]
+[ext_resource type="Texture2D" uid="uid://cbnfcx65xg5k3" path="res://Paper.png" id="1_ptyp3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltl1s"]
+size = Vector2(12.8571415, 21.42857)
+
+[node name="Paper" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_00jyy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("1_ptyp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 1.0000002)
+scale = Vector2(1.4, 1.4)
+shape = SubResource("RectangleShape2D_ltl1s")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

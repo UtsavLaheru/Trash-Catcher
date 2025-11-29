@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://xdlj2k36sdrb"]
+
+[ext_resource type="Texture2D" uid="uid://6f7kfe5erw3w" path="res://Bandage.png" id="1_7y6h3"]
+[ext_resource type="Script" uid="uid://epl7p6h7qvp0" path="res://black_bin_food.tres.gd" id="1_fthgn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltl1s"]
+size = Vector2(19.285713, 19.285713)
+
+[node name="Bandage" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_fthgn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("1_7y6h3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.49999905, 0.49999955)
+scale = Vector2(1.4, 1.4)
+shape = SubResource("RectangleShape2D_ltl1s")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
